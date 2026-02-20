@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrategia de Contenido & Lead Generation - Propuesta para Hassim</title>
+    <meta name="description" content="Sistema de generación de contenido automatizado para convertir expertise en leads calificados">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --border: #e2e8f0;
+            --warning: #fef3c7;
+            --warning-border: #f59e0b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto 2rem;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 3rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .price-tag .amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .price-tag .period {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 1rem;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .value-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .value-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .value-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .workflow-section {
+            background: var(--light);
+            padding: 4rem 0;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .workflow-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .workflow-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .workflow-card h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            font-size: 1.25rem;
+        }
+
+        .workflow-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .deliverables-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .deliverable-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .deliverable-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .deliverable-card ul {
+            list-style: none;
+        }
+
+        .deliverable-card li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .deliverable-card li:last-child {
+            border-bottom: none;
+        }
+
+        .deliverable-card li::before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .deliverable-card .quantity {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .tech-stack {
+            background: var(--light);
+            padding: 4rem 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .tech-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tech-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .tech-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .investment-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .pricing-card .price {
+            font-size: 4rem;
+            font-weight: 800;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card .price small {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-card li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-card li::before {
+            content: "✓";
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .warning-box {
+            background: var(--warning);
+            border-left: 4px solid var(--warning-border);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+
+        .warning-box h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .warning-box p {
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .warning-box strong {
+            color: #92400e;
+        }
+
+        .timeline-section {
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .faq-section {
+            background: var(--light);
+            padding: 4rem 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--light);
+        }
+
+        .faq-question::after {
+            content: "▼";
+            transition: transform 0.3s;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--gray);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.25rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--secondary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .price-tag .amount {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .value-grid, .workflow-grid, .deliverables-grid, .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">DUKECREA</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Tu Conocimiento en Contenido<br>Que Genera Leads Automáticamente</h1>
+                <p>1 hora de tu tiempo/semana = Sistema completo de contenido multicanal que atrae clientes mientras tú te enfocas en tu negocio</p>
+                
+                <div class="price-tag">
+                    <span class="amount">$700</span>
+                    <span class="period">por mes</span>
+                </div>
+
+                <a href="#contact" class="cta-primary">Ver Propuesta Completa →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section">
+        <div class="container">
+            <h2 class="section-title">El Problema Que Resolvemos</h2>
+            <p class="section-subtitle">Tienes expertise valiosa, pero no tienes tiempo ni equipo para convertirla en contenido que genere leads consistentemente</p>
+            
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="icon">⏰</div>
+                    <h3>Sin Tiempo para Crear Contenido</h3>
+                    <p>Sabes que necesitas presencia online consistente, pero entre clientes y operaciones no tienes 10-15 horas/semana para crear contenido.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">🎯</div>
+                    <h3>Contenido Genérico No Convierte</h3>
+                    <p>Los posts "motivacionales" o genéricos no demuestran tu expertise real. Necesitas contenido que muestre tu conocimiento único.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">📊</div>
+                    <h3>Dependes de Referencias</h3>
+                    <p>Tus mejores clientes llegan por referencia, pero ese flujo es impredecible. Necesitas un sistema que genere leads constantemente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="workflow-section">
+        <div class="container">
+            <h2 class="section-title">Cómo Funciona el Sistema</h2>
+            <p class="section-subtitle">Proceso simple que convierte tu conocimiento en contenido automatizado</p>
+
+            <div class="workflow-grid">
+                <div class="workflow-card">
+                    <div class="workflow-number">1</div>
+                    <h3>Llamadas Semanales</h3>
+                    <p>2 sesiones de 30 minutos/semana conmigo. Conversación natural sobre temas que interesan a tu cliente ideal. Yo grabo automáticamente.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="workflow-number">2</div>
+                    <h3>Extracción de Contenido</h3>
+                    <p>De cada conversación saco 3-4 clips cortos para redes sociales + 5-7 tweets + 2-3 posts LinkedIn/semana.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="workflow-number">3</div>
+                    <h3>Publicación Automática</h3>
+                    <p>El contenido se publica automáticamente en tus canales. Tú solo revisas y apruebas si quieres.</p>
+                </div>
+
+                <div class="workflow-card">
+                    <div class="workflow-number">4</div>
+                    <h3>Engagement Automatizado</h3>
+                    <p>Sistema responde automáticamente comentarios que muestren interés, captura leads y los organiza en CRM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deliverables-section">
+        <div class="container">
+            <h2 class="section-title">Qué Recibes Cada Mes</h2>
+            <p class="section-subtitle">Todo el contenido y automatización que necesitas, sin contratar equipo</p>
+
+            <div class="deliverables-grid">
+                <div class="deliverable-card">
+                    <h3>📹 Contenido de Video</h3>
+                    <ul>
+                        <li><span class="quantity">12-16 clips cortos/mes</span> optimizados para TikTok, Reels, Shorts</li>
+                        <li>Edición profesional con subtítulos automáticos</li>
+                        <li>Cortes dinámicos de los mejores momentos</li>
+                        <li>Publicación programada en tus canales</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-card">
+                    <h3>✍️ Contenido Escrito</h3>
+                    <ul>
+                        <li><span class="quantity">20-28 tweets/mes</span> (5-7/semana)</li>
+                        <li><span class="quantity">4-8 threads/mes</span> (1-2/semana para contenido profundo)</li>
+                        <li><span class="quantity">8-12 posts LinkedIn/mes</span> (2-3/semana)</li>
+                        <li>Todos extraídos de TUS conversaciones reales</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-card">
+                    <h3>🤖 Automatización</h3>
+                    <ul>
+                        <li>Respuestas automáticas a comentarios con interés</li>
+                        <li>Captura de leads desde redes sociales</li>
+                        <li>Integración con CRM (GoHighLevel u otro)</li>
+                        <li>Notificaciones de leads calientes en tiempo real</li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-card">
+                    <h3>📊 Herramientas & Reportes</h3>
+                    <ul>
+                        <li><strong>DukePulse</strong> incluido: Monitoreo de menciones y tendencias</li>
+                        <li>Dashboard de métricas en tiempo real</li>
+                        <li>Reporte mensual de rendimiento</li>
+                        <li>Reunión mensual de estrategia (30 min)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Tecnología e IA a Tu Servicio</h2>
+            <p class="section-subtitle">Todas las herramientas de inteligencia artificial que necesitas, sin que tengas que aprender a usarlas</p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="icon">🎙️</div>
+                    <h4>Transcripción con IA</h4>
+                    <p>Conversión automática de audio a texto</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="icon">✂️</div>
+                    <h4>Edición Inteligente</h4>
+                    <p>IA identifica mejores momentos para clips</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="icon">📝</div>
+                    <h4>Generación de Copy</h4>
+                    <p>Claude AI para contenido escrito optimizado</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="icon">🎬</div>
+                    <h4>Subtítulos Auto</h4>
+                    <p>Subtítulos sincronizados automáticamente</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="icon">💬</div>
+                    <h4>Chatbots IA</h4>
+                    <p>Respuestas automáticas inteligentes</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="icon">📊</div>
+                    <h4>Analytics Avanzado</h4>
+                    <p>Análisis de engagement y conversión</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Tu Semana Típica</h2>
+            <p class="section-subtitle">Solo <strong>1 hora/semana</strong> de tu tiempo. El resto lo hace el sistema.</p>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-marker">Lun</div>
+                    <div class="timeline-content">
+                        <h4>Primera Llamada (30 min)</h4>
+                        <p>Conversación casual conmigo sobre un tema que interesa a tus clientes. Grabación automática activada.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">Mar</div>
+                    <div class="timeline-content">
+                        <h4>Sistema Procesa Contenido</h4>
+                        <p>IA extrae clips, genera tweets y posts. Programación automática para toda la semana.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">Mié</div>
+                    <div class="timeline-content">
+                        <h4>Publicación Automatizada</h4>
+                        <p>2-3 clips + varios tweets + 1 post LinkedIn se publican. Chatbot responde comentarios.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">Jue</div>
+                    <div class="timeline-content">
+                        <h4>Segunda Llamada (30 min)</h4>
+                        <p>Otra conversación de 30 min. Diferente ángulo o tema nuevo. Misma grabación automática.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">Vie</div>
+                    <div class="timeline-content">
+                        <h4>Más Contenido Publicado</h4>
+                        <p>Sistema publica segunda tanda de contenido. Tú recibes notificaciones de leads interesados.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">Sáb/Dom</div>
+                    <div class="timeline-content">
+                        <h4>Sistema Trabaja 24/7</h4>
+                        <p>Contenido sigue generando engagement. Chatbot responde. Leads se capturan automáticamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="investment-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Inversión</h2>
+
+            <div class="pricing-card">
+                <h3>Todo Incluido</h3>
+                <div class="price">$700<small>/mes</small></div>
+                
+                <ul>
+                    <li>2 llamadas grabadas/semana (8 total/mes)</li>
+                    <li>12-16 clips cortos editados</li>
+                    <li>20-28 tweets + 4-8 threads</li>
+                    <li>8-12 posts LinkedIn</li>
+                    <li>Automatización completa de respuestas</li>
+                    <li>CRM configurado (GoHighLevel o similar)</li>
+                    <li>DukePulse incluido (monitoreo)</li>
+                    <li>Todas las herramientas de IA necesarias</li>
+                    <li>Reportes mensuales + reunión estratégica</li>
+                </ul>
+
+                <p style="text-align: center; margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+                    Compromiso mínimo: 3 meses<br>
+                    Cancelación flexible después del período inicial
+                </p>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Lo Que NO Incluye</h3>
+                <p>
+                    Este paquete <strong>NO incluye presupuesto para ads pagados</strong> (Facebook/Instagram/Google Ads). 
+                    El precio de $700/mes es solo por la creación de contenido y automatización.
+                </p>
+                <p style="margin-top: 1rem;">
+                    Si decides agregar ads después (recomendado para escalar), necesitarás un presupuesto adicional 
+                    de $500-1,500/mes que <strong>tú inviertes directamente</strong> en las plataformas. 
+                    Yo puedo configurar y gestionar esas campañas sin costo extra.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">¿Realmente solo necesito 1 hora/semana?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Sí. Las 2 llamadas de 30 minutos son todo tu compromiso de tiempo. Yo me encargo de grabar, editar, publicar y gestionar todo el contenido. Si quieres revisar antes de publicar, agrega 15-20 min/semana, pero no es obligatorio.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué pasa si no me siento cómodo frente a cámara?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Las "llamadas" pueden ser solo audio si prefieres. Muchos clips efectivos son solo tu voz con texto animado. El formato conversacional hace todo más natural. Yo guío la conversación, tú solo compartes tu conocimiento como lo harías con un cliente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Cuánto tiempo antes de ver resultados?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Primeras interacciones: semana 1-2. Primeros leads: semana 3-4. Flujo consistente: mes 2-3. El contenido es acumulativo, cada pieza sigue trabajando después de publicarse. A los 3 meses tendrás ~50-60 piezas de contenido trabajando por ti.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué es DukePulse y por qué es gratis?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            DukePulse es mi herramienta de monitoreo que rastrea menciones de tu marca, competencia y tendencias en tu industria. Normalmente costaría $50-100/mes, pero está incluido gratis porque necesito usar los datos para optimizar tu estrategia de contenido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Puedo usar mi propio CRM en lugar de GoHighLevel?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutamente. Si ya usas HubSpot, Zoho, Salesforce, o cualquier otro CRM, puedo integrar el sistema con tu plataforma existente. GoHighLevel es solo una recomendación si no tienes CRM aún.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué pasa después de los 3 meses mínimos?</div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Puedes cancelar con 30 días de aviso. O continuamos mes a mes. La mayoría de clientes continúan porque para el mes 3-4 ya están viendo ROI claro y el sistema está generando leads consistentemente.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para Convertir Tu Conocimiento en Leads?</h2>
+            <p>Primera llamada grabada la semana que confirmemos. Sistema completo activo en 7 días.</p>
+            
+            <div class="cta-buttons">
+                <a href="mailto:antonio@dukecrea.com" class="btn btn-white">
+                    📧 antonio@dukecrea.com
+                </a>
+                <a href="https://wa.me/50761234567" class="btn btn-outline">
+                    💬 WhatsApp
+                </a>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">
+                Próximos pasos: Llamada de 20 minutos para entender tu negocio → Plan de contenido personalizado → Empezamos
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 DUKECREA - Marketing & AI Automation</p>
+            <p style="margin-top: 0.5rem;">antonio@dukecrea.com | Panamá & España</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                question.parentElement.classList.toggle('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
